@@ -1,6 +1,6 @@
 cask "fantasma" do
   version "0.4.9"
-  sha256 "7574bd538bfa86534c685959cc9041cca4380ef91bfb45fd9f5b92978445de7f"
+  sha256 "cfcfcce6fd7bad5964486ff9f451abdfbcee2fe5ec5249fb5c0353d5177d205b"
 
   url "https://github.com/andrew-bierman/fantasma/releases/download/v#{version}/Fantasma-#{version}-arm64.zip"
   name "Fantasma"
