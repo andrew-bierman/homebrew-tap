@@ -1,6 +1,6 @@
 cask "fantasma" do
-  version "0.4.7"
-  sha256 "77bd7b9a74b25e8ebcf044efa519219c2b10190f164d04c7808698fe90ed9f52"
+  version "0.4.8"
+  sha256 "d7bff863d2bd9d4ae92aa7ff9d01fd0e79e76378e6c20020de1aea599a780525"
 
   url "https://github.com/andrew-bierman/fantasma/releases/download/v#{version}/Fantasma-#{version}-arm64.zip"
   name "Fantasma"
@@ -9,9 +9,5 @@ cask "fantasma" do
 
   app "Fantasma-#{version}/Fantasma.app"
 
-  caveats <<~EOS
-    Apple silicon only. Unnotarized build: on first launch, right-click
-    Fantasma.app -> Open, or run:
-      xattr -dr com.apple.quarantine ~/Applications/Fantasma.app
-  EOS
+  caveats "Apple silicon only."
 end
