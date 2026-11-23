@@ -5,23 +5,23 @@
 class Lambe < Formula
   desc "Supervisor that runs coding agents against a Beads tracker and verifies completion"
   homepage "https://github.com/andrew-bierman/lambe"
-  version "0.11.0"
+  version "0.11.1"
   license "GPL-3.0-or-later"
 
   depends_on "beads"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/andrew-bierman/lambe/releases/download/v0.11.0/lambe_0.11.0_darwin_amd64.tar.gz"
-      sha256 "dd4d719761c12c8de9c61eb78cfd755d2139e850a8289e5cb203c697065a0381"
+      url "https://github.com/andrew-bierman/lambe/releases/download/v0.11.1/lambe_0.11.1_darwin_amd64.tar.gz"
+      sha256 "3a389f32e53154329ca664c200bb937b9e913c1ca5adb15badf76ccbb24ad8c6"
 
       define_method(:install) do
         bin.install "lambe"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/andrew-bierman/lambe/releases/download/v0.11.0/lambe_0.11.0_darwin_arm64.tar.gz"
-      sha256 "0613e6db3ca3719cd9eae6c58726c76357989506c8ded7977936fb8e56d8d660"
+      url "https://github.com/andrew-bierman/lambe/releases/download/v0.11.1/lambe_0.11.1_darwin_arm64.tar.gz"
+      sha256 "2e286ee5e545fd85a661116b307d71894f54fe53de930d3214badfb01c490522"
 
       define_method(:install) do
         bin.install "lambe"
@@ -31,15 +31,15 @@ class Lambe < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/andrew-bierman/lambe/releases/download/v0.11.0/lambe_0.11.0_linux_amd64.tar.gz"
-      sha256 "8a0fd01c8810f1cab1272e25d2e61beaa8197f208f68e2c96f4e7d1c86772037"
+      url "https://github.com/andrew-bierman/lambe/releases/download/v0.11.1/lambe_0.11.1_linux_amd64.tar.gz"
+      sha256 "08eade6fb47e9e4a6720e141255965e5f00acde7a13579c613f74f4f51417df7"
       define_method(:install) do
         bin.install "lambe"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/andrew-bierman/lambe/releases/download/v0.11.0/lambe_0.11.0_linux_arm64.tar.gz"
-      sha256 "4cec0d2221f104e25260cea6d1c8ef6dd273053fbf766f751981ce76617e889e"
+      url "https://github.com/andrew-bierman/lambe/releases/download/v0.11.1/lambe_0.11.1_linux_arm64.tar.gz"
+      sha256 "b853dc2a54c15040b2bb908dd9f2add39fdcc44cf29a341fa565391799106a02"
       define_method(:install) do
         bin.install "lambe"
       end
