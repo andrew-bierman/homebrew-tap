@@ -1,0 +1,55 @@
+name: Sync Fantasma cask
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/sync-fantasma.yml
+      - scripts/sync_fantasma.py
+      - tests/test_sync_fantasma.py
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/sync-fantasma.yml
+      - scripts/sync_fantasma.py
+      - tests/test_sync_fantasma.py
+  schedule:
+    - cron: '23 * * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: fantasma-cask-sync
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m unittest discover -s tests -v
+
+  sync:
+    if: github.event_name != 'pull_request'
+    needs: test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update cask from latest release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/sync_fantasma.py
+      - name: Commit update when needed
+        run: |
+          git add Casks/fantasma.rb
+          if git diff --cached --quiet; then
+            echo "Fantasma cask is current"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update Fantasma cask from latest release"
+          git push
